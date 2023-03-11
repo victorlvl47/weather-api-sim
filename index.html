@@ -61,7 +61,7 @@
         <button id="consult-button">Consultar</button>
 
         <div id="display-weather">
-            <p class="info-weather">Manana Despejado 30&#8451;</p>              
+            
         </div>
     </div>
 
@@ -74,7 +74,14 @@
         }
 
         document.getElementById('consult-button').addEventListener('click', function() {
-            alert("button clicked");
+            var displayWeather = document.getElementById('display-weather');
+            
+            // create weather info
+            const infoWeather = document.createElement('p');
+            infoWeather.textContent = getWeather();
+            infoWeather.classList.add('info-weather');
+            displayWeather.appendChild(infoWeather);
+
         });
     </script>
     
