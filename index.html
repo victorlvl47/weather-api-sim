@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *, htlm, body {
+            background-color: #3fa6f9;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        #consult-button {
+            background-color: #6bb5f5;
+            color: #fbfdf7;
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        #weather-date {
+            background-color: #6bb5f5;
+            color: #fbfdf7;
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+        }
+
+        #display-weather {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .info-weather {
+            font-size: 50px;
+            font-weight: 600;
+            background-image: linear-gradient(to left, #fbfdf7, #ffffff);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <input type="date" id="weather-date">
+        <button id="consult-button">Consultar</button>
+
+        <div id="display-weather">
+            <p class="info-weather">Manana Despejado 30&#8451;</p>              
+        </div>
+    </div>
+
+    <script>
+        const climates = ['Despejado', 'Nublado', 'Lluvioso'];
+
+        function getWeather() {
+            let randomNumber = Math.floor(Math.random() * 3);
+            return climates[randomNumber];
+        }
+
+        document.getElementById('consult-button').addEventListener('click', function() {
+            alert("button clicked");
+        });
+    </script>
+    
+</body>
+</html>
