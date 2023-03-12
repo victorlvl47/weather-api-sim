@@ -117,7 +117,14 @@
         }
 
         document.getElementById('consult-button').addEventListener('click', function() {
-            consultWeather();
+            let weatherDate = document.getElementById('weather-date');
+            
+            if (weatherDate.value === "") {
+                alert("Selecione una fecha");
+            }
+            else {
+                consultWeather();
+            }
         });
     </script>
     
