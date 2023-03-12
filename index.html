@@ -44,13 +44,25 @@
             margin-bottom: 50px;
         }
 
-        .info-weather {
+        .weather-container {
+            overflow: auto;
+            background-color: #6bb4f6;
+        }
+
+        .time-weather, .info-weather {
             font-size: 50px;
             font-weight: 600;
             background-image: linear-gradient(to left, #fbfdf7, #ffffff);
             color: transparent;
             background-clip: text;
             -webkit-background-clip: text;
+
+            display: inline-block;
+            width: 45%; /* adjust as needed */
+            float: left;
+            margin: 0;
+            padding: 10px;
+            box-sizing: border-box;
         }
     </style>
 </head>
@@ -61,7 +73,8 @@
         <button id="consult-button">Consultar</button>
 
         <div id="display-weather">
-            
+            <div class="weather-container">
+            </div>
         </div>
     </div>
 
@@ -73,15 +86,38 @@
             return climates[randomNumber];
         }
 
-        document.getElementById('consult-button').addEventListener('click', function() {
-            var displayWeather = document.getElementById('display-weather');
-            
-            // create weather info
-            const infoWeather = document.createElement('p');
-            infoWeather.textContent = getWeather();
-            infoWeather.classList.add('info-weather');
-            displayWeather.appendChild(infoWeather);
+        function getTemperature() {
+            let min = 5;
+            let max = 30;
+            let randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
 
+            return randomNum + "\u2103";
+        }
+
+        function consultWeather() {
+            const timeOfDay = ["Ma\u00F1ana", "Tarde", "Noche"];
+            let displayWeather = document.getElementById('display-weather');
+
+            for (let i = 0; i < 3; i++) {
+                // create weather
+                const weatherContainer = document.createElement('div');
+                weatherContainer.classList.add('weather-container');
+                displayWeather.appendChild(weatherContainer);
+
+                const timeWeather = document.createElement('p');
+                timeWeather.textContent = timeOfDay[i];
+                timeWeather.classList.add('time-weather');
+                weatherContainer.appendChild(timeWeather);
+
+                const infoWeather = document.createElement('p');
+                infoWeather.textContent = getWeather() + " " + getTemperature();
+                infoWeather.classList.add('info-weather');
+                weatherContainer.appendChild(infoWeather);
+            }
+        }
+
+        document.getElementById('consult-button').addEventListener('click', function() {
+            consultWeather();
         });
     </script>
     
