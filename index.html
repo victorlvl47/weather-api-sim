@@ -72,10 +72,7 @@
         <input type="date" id="weather-date">
         <button id="consult-button">Consultar</button>
 
-        <div id="display-weather">
-            <div class="weather-container">
-            </div>
-        </div>
+        <div id="display-weather"></div>
     </div>
 
     <script>
@@ -97,6 +94,9 @@
         function consultWeather() {
             const timeOfDay = ["Ma\u00F1ana", "Tarde", "Noche"];
             let displayWeather = document.getElementById('display-weather');
+
+            // Clear the display-weather
+            displayWeather.innerHTML = "";
 
             for (let i = 0; i < 3; i++) {
                 // create weather
